@@ -1,19 +1,25 @@
-#include <iostream>
 #include "raylib.h"
+#include "grid.hpp"
 
 int main() {
 
-    const int screenWidth = 800;
-    const int screenHeight = 450;
-    InitWindow(screenWidth, screenHeight, "Raylib Test Window");
+    const int SCREEN_WIDTH = 750;
+    const int SCREEN_HEIGHT = 750;
+    const int CELL_SIZE = 25;
+    const int MAX_FPS = 20;
 
-    SetTargetFPS(60);
+    Color BACKGROUND = {5, 5, 5, 255};
+
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Test Window");
+    SetTargetFPS(MAX_FPS);
+
+    Grid grid(SCREEN_WIDTH, SCREEN_HEIGHT, CELL_SIZE);
 
     while (!WindowShouldClose()) {
 
         BeginDrawing();
-            ClearBackground(RAYWHITE);
-            DrawText("Congratulations! You compiled raylib!", 190, 200, 20, LIGHTGRAY);
+        ClearBackground(BACKGROUND);
+        grid.Draw();
         EndDrawing();
     }
 
